@@ -95,7 +95,7 @@ bool RichEditHost::Initialize(const Appearance& appearance) {
     }
 
     const DWORD mask = TXTBIT_RICHTEXT | TXTBIT_MULTILINE | TXTBIT_WORDWRAP |
-                       TXTBIT_SAVESELECTION | TXTBIT_ADVANCEDINPUT | TXTBIT_D2DDWRITE |
+                       TXTBIT_SAVESELECTION | TXTBIT_D2DDWRITE |
                        TXTBIT_D2DPIXELSNAPPED | TXTBIT_BACKSTYLECHANGE |
                        TXTBIT_CHARFORMATCHANGE | TXTBIT_PARAFORMATCHANGE;
     text_services_->OnTxPropertyBitsChange(mask, mask);
@@ -397,7 +397,7 @@ HRESULT RichEditHost::OnTxParaFormatChange(const PARAFORMAT* format) {
 HRESULT RichEditHost::TxGetPropertyBits(DWORD mask, DWORD* bits) {
     if (!bits) return E_POINTER;
     DWORD value = TXTBIT_RICHTEXT | TXTBIT_MULTILINE | TXTBIT_WORDWRAP |
-                  TXTBIT_SAVESELECTION | TXTBIT_ADVANCEDINPUT | TXTBIT_D2DDWRITE |
+                  TXTBIT_SAVESELECTION | TXTBIT_D2DDWRITE |
                   TXTBIT_D2DPIXELSNAPPED;
     if (read_only_) value |= TXTBIT_READONLY;
     *bits = value & mask;
