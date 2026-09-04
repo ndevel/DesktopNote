@@ -408,7 +408,7 @@ HRESULT RichEditHost::TxNotify(DWORD notification, void*) {
     return S_OK;
 }
 HIMC RichEditHost::TxImmGetContext() { return ImmGetContext(window_); }
-void RichEditHost::TxImmReleaseContext(HIMC context) { ImmReleaseContext(window_, context); }
+void RichEditHost::TxImmReleaseContext(HIMC context) { if (context) ImmReleaseContext(window_, context); }
 HRESULT RichEditHost::TxGetSelectionBarWidth(LONG* width) { if (!width) return E_POINTER; *width = 0; return S_OK; }
 
 BOOL RichEditHost::TxIsDoubleClickPending() {
